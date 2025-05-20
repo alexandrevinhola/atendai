@@ -124,12 +124,6 @@ Sinta-se livre para utilizar, modificar e redistribuir com os devidos créditos.
 
 ---
 
-## 📷 Screenshot
-
-![Tela do Chatbot](https://via.placeholder.com/800x400.png?text=AtendAI+-+Chatbot+Inteligente)
-
----
-
 ## 📬 Contato
 
 Desenvolvido por **Alexandre Vinhola** 
