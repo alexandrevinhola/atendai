@@ -117,13 +117,6 @@ Abra uma issue para sugestões de novas funcionalidades ou melhorias.
 
 ---
 
-## 🧾 Licença
-
-Este projeto está sob a licença MIT.  
-Sinta-se livre para utilizar, modificar e redistribuir com os devidos créditos.
-
----
-
 ## 📬 Contato
 
 Desenvolvido por **Alexandre Vinhola** 
