@@ -132,5 +132,4 @@ Sinta-se livre para utilizar, modificar e redistribuir com os devidos créditos.
 
 ## 📬 Contato
 
-Desenvolvido por **Alexandre Vinholados**  
-Email: `seu.email@exemplo.com`
+Desenvolvido por **Alexandre Vinhola** 
