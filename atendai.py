@@ -13,7 +13,7 @@ message_queue = Queue()
 def chat_with_ollama(message, session_id=None):
     url = "http://127.0.0.1:11434/api/generate"
     payload = {
-        "model": "mistral",  # ou 'phi' ou outro modelo que você tenha
+        "model": "phi",  # ou 'phi' ou outro modelo que você tenha
         "prompt": message,
         "stream": False
     }

@@ -23,9 +23,9 @@ AtendAI é um chatbot inteligente que funciona localmente, utilizando o modelo d
 
 ### 1️⃣ Instalar dependências Python:
 
-```bash
+
 pip install -r requirements.txt
-```
+
 
 ### 2️⃣ Instalar Ollama (backend de IA local)
 
@@ -34,23 +34,23 @@ pip install -r requirements.txt
 
 ### 3️⃣ Baixar o modelo Mistral:
 
-```bash
+
 ollama pull mistral
-```
+
 
 ## ▶️ Como executar
 
 Execute o servidor Flask:
 
-```bash
+
 python atendai.py
-```
+
 
 Acesse no navegador:
 
-```
+
 http://127.0.0.1:5000
-```
+
 
 ## 🧠 Como funciona
 
@@ -61,13 +61,13 @@ http://127.0.0.1:5000
 
 ## 📂 Estrutura do Projeto
 
-```
+
 atendai/
 ├── atendai.py
 ├── chatbot.db
 ├── requirements.txt
 ├── README.md
-```
+
 
 ## 📝 Roadmap de Melhorias
 
