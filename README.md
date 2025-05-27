@@ -1,122 +1,86 @@
+# AtendAI
 
-# 🤖 AtendAI - Chatbot Inteligente para Atendimento ao Cliente
+AtendAI é um chatbot inteligente que funciona localmente, utilizando o modelo de linguagem **Mistral 7B via Ollama**. Ele permite interação em português, responde dúvidas, armazena histórico de conversas e não depende de APIs pagas.
 
-**AtendAI** é um assistente virtual desenvolvido com Flask, inteligência artificial (OpenAI GPT), interface web responsiva e banco de dados local. Ele é projetado para responder perguntas, armazenar histórico de conversas, aprender com feedback dos usuários e facilitar o atendimento automatizado.
+## 🚀 Funcionalidades
 
----
+- Respostas automáticas com IA local (Mistral 7B).
+- Armazena histórico de conversas por sessão.
+- Permite criação de base de conhecimento (FAQ).
+- Interface Web simples e responsiva com HTML + CSS.
+- Processamento de linguagem natural (NLP) offline via Ollama.
+- Totalmente gratuito e privativo, roda localmente no seu PC.
 
-## 📌 Propósito
+## 🔧 Tecnologias Utilizadas
 
-Proporcionar um atendimento simples, direto e automatizado para usuários que buscam informações rápidas e registro de interações, com capacidade de evolução baseada em aprendizado contínuo.
+- Python 3.x
+- Flask
+- SQLite
+- Ollama + Mistral 7B (IA local)
+- HTML, CSS (Frontend básico)
 
----
+## ⚙️ Instalação
 
-## 👥 Público-alvo
-
-Qualquer pessoa que precise de atendimento automatizado básico, como clientes de serviços digitais, bancários, e-commerces e sistemas de suporte geral.
-
----
-
-## 🛠️ Funcionalidades
-
-- Processamento de linguagem natural com OpenAI GPT-3.5
-- Interface web simples com Bootstrap
-- Histórico de conversas por sessão e usuário
-- Banco de dados SQLite com perguntas e respostas reutilizáveis
-- Aprendizado de perguntas desconhecidas
-- Feedback sobre respostas úteis
-- Sugestões de comandos mais comuns
-- Encerramento e limpeza de sessão
-
----
-
-## 💡 Tecnologias Utilizadas
-
-- **Python 3**
-- **Flask**
-- **SQLite3**
-- **OpenAI GPT (API)**
-- **HTML + CSS + Bootstrap 5**
-- **UUID / Datetime / JSON**
-
----
-
-## 📁 Estrutura do Projeto
-
-```
-atendai/
-│
-├── app.py                  # Aplicação principal Flask
-├── chatbot.db              # Banco de dados SQLite
-├── templates/              # Interface HTML
-├── static/                 # Arquivos CSS e JS (opcional)
-├── requirements.txt        # Dependências
-└── README.md               # Este arquivo
-```
-
----
-
-## 🚀 Como Executar Localmente
-
-### 1. Clone o projeto
-
-```bash
-git clone https://github.com/seu-usuario/atendai.git
-cd atendai
-```
-
-### 2. Instale as dependências
+### 1️⃣ Instalar dependências Python:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-> Se você não tiver um arquivo `requirements.txt`, use:
-```bash
-pip install flask openai
-```
+### 2️⃣ Instalar Ollama (backend de IA local)
 
-### 3. Defina sua chave da API OpenAI
+- Acesse: [https://ollama.com/](https://ollama.com/)  
+- Baixe e instale para Windows, Mac ou Linux.
 
-No `app.py`, edite esta linha:
-
-```python
-openai.api_key = 'sua-api-key-aqui'
-```
-
-### 4. Execute o servidor
+### 3️⃣ Baixar o modelo Mistral:
 
 ```bash
-python app.py
+ollama pull mistral
 ```
 
-Acesse no navegador:  
-[http://localhost:5000](http://localhost:5000)
+## ▶️ Como executar
 
----
+Execute o servidor Flask:
 
-## 📊 Estrutura do Banco de Dados
+```bash
+python atendai.py
+```
 
-- `qa`: Base de conhecimento com perguntas e respostas
-- `history`: Histórico de mensagens por sessão e usuário
-- `unknown`: Registro de perguntas não reconhecidas
-- `feedback`: Armazenamento de feedbacks úteis/não úteis
+Acesse no navegador:
 
----
+```
+http://127.0.0.1:5000
+```
 
-## 🧠 Inteligência Artificial
+## 🧠 Como funciona
 
-O AtendAI utiliza a API GPT-3.5 para gerar respostas em linguagem natural, com base no histórico da conversa e contexto do usuário. Se a pergunta já estiver na base de dados, a resposta é retornada diretamente. Caso contrário, a IA gera uma nova resposta.
+- O chatbot verifica se existe uma resposta na base de dados (`SQLite`).
+- Se não existir, ele consulta a IA local (Mistral via Ollama).
+- Todo o histórico da sessão é enviado junto, permitindo conversas contextuais.
+- Respostas podem ser armazenadas automaticamente para melhorar o atendimento.
 
----
+## 📂 Estrutura do Projeto
 
-## ✍️ Contribuições
+```
+atendai/
+├── atendai.py
+├── chatbot.db
+├── requirements.txt
+├── README.md
+```
 
-Pull requests são bem-vindos!  
-Abra uma issue para sugestões de novas funcionalidades ou melhorias.
+## 📝 Roadmap de Melhorias
 
----
+- [ ] Adicionar painel administrativo para visualizar perguntas desconhecidas.
+- [ ] Implementar exportação do histórico em PDF ou CSV.
+- [ ] Melhorar a interface com Bootstrap ou Tailwind CSS.
+- [ ] Suporte para múltiplos usuários com login.
+- [ ] Deploy local via Docker.
 
-## 📬 Contato
+## 🤝 Contribuição
 
-Desenvolvido por **Alexandre Vinhola** 
+Sinta-se livre para enviar melhorias, abrir issues ou sugerir novas funcionalidades.
+
+## 💡 Créditos
+
+Desenvolvido por Alexandre Vinhola utilizando IA Mistral 7B + Ollama + Flask + SQLite.
