@@ -13,7 +13,7 @@ message_queue = Queue()
 def chat_with_ollama(message, session_id=None):
     url = "http://127.0.0.1:11434/api/generate"
     payload = {
-        "model": "phi",  # ou 'phi' ou outro modelo que você tenha
+        "model": "mistral",  # ou 'phi' ou outro modelo que você tenha
         "prompt": message,
         "stream": False
     }
@@ -63,7 +63,7 @@ CHAT_TEMPLATE = '''
   </style>
 </head>
 <body>
-  <h1>🧠 AtendAI</h1>
+  <h1>AtendAI</h1>
   <div id="chat"></div>
   <input type="text" id="input" placeholder="Sua mensagem..."/>
   <button onclick="sendMessage()">Enviar</button>
