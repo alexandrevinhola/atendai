@@ -10,20 +10,44 @@ app = Flask(__name__)
 message_queue = Queue()
 
 # 🔗 Função para se comunicar com o Ollama
+# 🔗 Função para se comunicar com o Ollama (com prompt personalizado)
 def chat_with_ollama(message, session_id=None):
     url = "http://127.0.0.1:11434/api/generate"
+
+    # ✅ Prompt restritivo para atendente de loja
     system_prompt = (
-        "Você é um atendente virtual de uma loja de roupas. "
-        "Responda apenas dúvidas sobre os produtos, trocas, devoluções, formas de pagamento, "
-        "horários de funcionamento ou políticas da loja. "
-        "Se a pergunta não estiver relacionada à loja, diga: "
-        "'Desculpe, só posso responder dúvidas relacionadas à loja e seus serviços.'"
+        "Você é um atendente virtual da loja *EstiloFácil*, especializada em roupas masculinas, femininas e acessórios. "
+        "Seu papel é responder com simpatia e clareza às dúvidas dos clientes, exclusivamente sobre os serviços da loja.\n\n"
+
+        "📅 Horário de Funcionamento:\n"
+        "- Segunda a sexta: 9h às 18h\n"
+        "- Sábado: 9h às 14h\n"
+        "- Domingo e feriados: fechado\n\n"
+
+        "💳 Formas de Pagamento:\n"
+        "- Dinheiro\n"
+        "- Cartão de crédito e débito (Visa, MasterCard, Elo)\n"
+        "- Pix\n"
+        "- Parcelamento em até 3x sem juros a partir de R$150\n\n"
+
+        "🔄 Política de Trocas:\n"
+        "- Trocas em até 30 dias com nota fiscal\n"
+        "- Produto deve estar com etiqueta e sem uso\n"
+        "- Não trocamos peças íntimas ou em promoção\n\n"
+
+        "❗ Limitação:\n"
+        "Se a pergunta for fora do escopo da loja, como temas pessoais, políticos ou técnicos, responda educadamente:\n"
+        "'Desculpe, só posso responder dúvidas relacionadas à loja EstiloFácil e seus serviços.'"
     )
+
+    prompt = f"{system_prompt}\n\nUsuário: {message}\nAtendente:"
+
     payload = {
-        "model": "mistral",
-        "prompt": f"{system_prompt}\nUsuário: {message}\nAtendente:",
+        "model": "mistral",  # ou 'phi' ou outro que você tiver no Ollama
+        "prompt": prompt,
         "stream": False
     }
+
     try:
         response = requests.post(url, json=payload, timeout=60)
         response.raise_for_status()
@@ -37,7 +61,6 @@ def chat_with_ollama(message, session_id=None):
         return f"❌ Erro HTTP: {err.response.status_code} - {err.response.text}"
     except Exception as e:
         return f"⚠️ Erro inesperado: {e}"
-
 
 # 🧠 Dicionário para armazenar respostas por sessão
 response_store = {}
