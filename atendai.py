@@ -12,9 +12,16 @@ message_queue = Queue()
 # 🔗 Função para se comunicar com o Ollama
 def chat_with_ollama(message, session_id=None):
     url = "http://127.0.0.1:11434/api/generate"
+    system_prompt = (
+        "Você é um atendente virtual de uma loja de roupas. "
+        "Responda apenas dúvidas sobre os produtos, trocas, devoluções, formas de pagamento, "
+        "horários de funcionamento ou políticas da loja. "
+        "Se a pergunta não estiver relacionada à loja, diga: "
+        "'Desculpe, só posso responder dúvidas relacionadas à loja e seus serviços.'"
+    )
     payload = {
-        "model": "mistral",  # ou 'phi' ou outro modelo que você tenha
-        "prompt": message,
+        "model": "mistral",
+        "prompt": f"{system_prompt}\nUsuário: {message}\nAtendente:",
         "stream": False
     }
     try:
@@ -30,6 +37,7 @@ def chat_with_ollama(message, session_id=None):
         return f"❌ Erro HTTP: {err.response.status_code} - {err.response.text}"
     except Exception as e:
         return f"⚠️ Erro inesperado: {e}"
+
 
 # 🧠 Dicionário para armazenar respostas por sessão
 response_store = {}
