@@ -10,7 +10,6 @@ app = Flask(__name__)
 message_queue = Queue()
 
 # 🔗 Função para se comunicar com o Ollama
-# 🔗 Função para se comunicar com o Ollama (com prompt personalizado)
 def chat_with_ollama(message, session_id=None):
     url = "http://127.0.0.1:11434/api/generate"
 
